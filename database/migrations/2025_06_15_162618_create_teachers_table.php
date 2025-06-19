@@ -9,7 +9,17 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void {}
+    public function up(): void {
+        Schema::create('teachers', function (Blueprint $table) {
+            $table->id();
+            $table->string('first_name')->comment('teacher first name');
+            $table->string('last_name')->comment('teacher last name');
+            $table->string('email')->unique()->comment('teacher email')->max(50);
+            $table->string('department')->comment('teacher department')->max(10);
+            $table->dateTime('birthday')->comment('teacher date of birth');
+            $table->timestamps();
+        });
+    }
 
     /**
      * Reverse the migrations.
