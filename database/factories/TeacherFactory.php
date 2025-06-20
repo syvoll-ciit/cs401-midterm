@@ -22,7 +22,7 @@ class TeacherFactory extends Factory
             'email' => fake()->unique()->safeEmail(),
             'department' => fake()->randomElement(['CS', 'MATH', 'ENG', 'BUS']),
             'birthday' => fake()->dateTimeBetween('-60 years', '-30 years'),
-            'user_id' => \App\Models\User::factory()->teacher(),
+            'user_id' => \App\Models\User::factory(),
         ];
     }
 }

@@ -6,25 +6,21 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('schedules', function (Blueprint $table) {
             $table->id();
-            $table->string('day_of_week')->comment('day of schedulek')->max(10);
-            $table->dateTime('time_slot')->comment('timeslot of schedule');
-            $table->string('room')->comment('room of schedule')->max(20);
-            $table->integer('term')->comment('term of schedule');
-            //$table->foreignId('course_id')->comment('schedule id')->constrained();
+            $table->string('day_of_week')->comment('Day of the week for the schedule')->max(10);
+            $table->dateTime('time_slot')->comment('Time slot for the schedule');
+            $table->string('room')->comment('Room where the class is held')->max(20);
+            $table->integer('term')->comment('Term during which the class is scheduled');
+            $table->unsignedBigInteger('course_id')->comment('ID of the course associated with the schedule');
             $table->timestamps();
+
+            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('schedules');

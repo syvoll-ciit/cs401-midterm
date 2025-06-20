@@ -14,7 +14,7 @@ class StudentSeeder extends Seeder
      */
     public function run(): void
     {
-        $studentUsers = User::whereHas('role', function($query) {
+        $studentUsers = User::whereHas('roles', function($query) {
             $query->where('role_name', 'student');
         })->get();
 

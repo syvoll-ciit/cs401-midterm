@@ -14,7 +14,7 @@ class TeacherSeeder extends Seeder
      */
     public function run(): void
     {
-        $teacherUsers = User::whereHas('role', function($query) {
+        $teacherUsers = User::whereHas('roles', function($query) {
             $query->where('role_name', 'teacher');
         })->get();
 

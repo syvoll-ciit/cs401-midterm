@@ -22,7 +22,7 @@ class StudentFactory extends Factory
             'program' => fake()->randomElement(['Computer Science', 'Engineering', 'Business', 'Arts']),
             'enrollment_year' => fake()->numberBetween(2018, 2023),
             'birthday' => fake()->dateTimeBetween('-30 years', '-18 years'),
-            'user_id' => \App\Models\User::factory()->student(),
+            'user_id' => \App\Models\User::factory(),
         ];
     }
 }
